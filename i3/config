@@ -192,3 +192,5 @@ bar {
 
 set $background "/usr/share/backgrounds/linuxmint/sele_ring.jpg"
 exec --no-startup-id nitrogen --set-scaled $background
+
+exec --no-startup-id numlockx on

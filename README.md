@@ -9,3 +9,4 @@ This configuration is tested on latest version of Linux Mint Cinnamon Edition an
 
 - brightnessctl
 - nitrogen
+- numlockx
