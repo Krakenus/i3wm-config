@@ -9,6 +9,13 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 
 ## Dependencies
 
-- brightnessctl
-- nitrogen
-- numlockx
+`brightnessctl`
+- used for brightness control.
+- xbacklight doesn't work for me
+- requires user to be in the `video` group
+
+`nitrogen`
+- used for background 
+
+`numlockx`
+- to make sure numblock is on after login 
