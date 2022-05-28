@@ -200,3 +200,5 @@ set $background "/usr/share/backgrounds/linuxmint/sele_ring.jpg"
 exec --no-startup-id nitrogen --set-scaled $background
 
 exec --no-startup-id numlockx on
+
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start
