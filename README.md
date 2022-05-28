@@ -18,4 +18,25 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 - used for background 
 
 `numlockx`
-- to make sure numblock is on after login 
+- to make sure numblock is on after login
+
+
+## Gnome Keyring
+
+Switching between Cinnamon and i3 overwrites sessions in Chromium based web browsers as well as in Electron desktop apps.
+
+In i3 it is required to add `--password-store=gnome` options to .desktop files of these apps to share one storage between Cinnamon and i3 sessions.
+
+There is a script in `scripts/enforce_gnome_keyring.py` that modifies the .desktop files of given apps. It requires operational `locate` command in the system.
+
+### usage
+
+Make sure the `locate` is setup and execute the script with names of the applications.
+
+So far tested with `brave-browser` and `slack`.
+
+```
+# apt install locate
+# updatedb
+# scripts/enforce_gnome_keyring.py brave-browser slack
+```
