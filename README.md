@@ -20,9 +20,10 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 `numlockx`
 - to make sure numblock is on after login 
 
+`xss-lock`
+
 `flameshot`
 - For screenshots and lock screen
 
- `imagemagick`
- - lock screen
- 
+`imagemagick`
+- lock screen
