@@ -29,6 +29,7 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 `imagemagick`
 - lock screen
 
+
 ## Gnome Keyring
 
 Switching between Cinnamon and i3 overwrites sessions in Chromium based web browsers as well as in Electron desktop apps.
