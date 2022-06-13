@@ -1,8 +1,9 @@
+import argparse
 import re
-import os
 import shutil
 import subprocess
-import argparse
+import os
+from typing import List
 
 regex = re.compile(r'^Exec=([\w/-]+)(:? +(.*))?$')
 
@@ -46,8 +47,25 @@ def get_file_locations(app_name: str):
         yield line.decode().strip()
 
 
+def load_config(config_path: str) -> List[str]:
+    apps = []
+    with open(config_path) as file:
+        for line in file:
+            apps.append(line.strip())
+    return apps
+
+
 def main(args: argparse.Namespace):
-    for app_name in args.apps:
+    if args.config:
+        apps = load_config(args.config)
+    else:
+        apps = args.apps
+
+    if not apps:
+        print('No apps specified')
+        return
+
+    for app_name in apps:
         if not app_name.endswith('.desktop'):
             app_name = f'{app_name}.desktop'
         print(f'Processing {app_name}...')
