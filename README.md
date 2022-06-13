@@ -19,7 +19,6 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 
 `numlockx`
 - to make sure numblock is on after login
-- to make sure numblock is on after login 
 
 `xss-lock`
 
@@ -38,7 +37,7 @@ In i3 it is required to add `--password-store=gnome` options to .desktop files o
 
 There is a script in `scripts/enforce_gnome_keyring.py` that modifies the .desktop files of given apps. It requires operational `locate` command in the system.
 
-### usage
+### Usage
 
 Make sure the `locate` is setup and execute the script with names of the applications.
 
@@ -47,5 +46,15 @@ So far tested with `brave-browser` and `slack`.
 ```
 # apt install locate
 # updatedb
-# scripts/enforce_gnome_keyring.py brave-browser slack
+# python3 scripts/enforce_gnome_keyring.py -a brave-browser slack
+```
+
+### Persisten solution
+
+The downside of using this script is that every package update made by `apt` package manager overwrites .desktop files by they original content. 
+
+To make sure the `--password-store` will be used in .desktop files after every upgrade you can add config file to `/etc/apt/apt.conf.d/100after-install` with following content:
+
+```
+DPkg::Post-Invoke {"python3 /usr/local/bin/enforce_gnome_keyring.py --no-backup --config /etc/enforce_gnome_keyring.conf";};
 ```
