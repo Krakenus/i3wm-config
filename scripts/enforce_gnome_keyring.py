@@ -70,6 +70,8 @@ def main(args: argparse.Namespace):
             app_name = f'{app_name}.desktop'
         print(f'Processing {app_name}...')
         for path in get_file_locations(app_name):
+            if not os.path.exists(path):
+                continue
             print(f' - {path}')
             process_file(args, path)
 
