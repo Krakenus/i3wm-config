@@ -1,0 +1,1 @@
+DPkg::Post-Invoke {"python3 /usr/local/bin/enforce_gnome_keyring.py --no-backup --config /etc/enforce_gnome_keyring.conf";};

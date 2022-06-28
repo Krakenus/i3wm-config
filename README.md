@@ -28,8 +28,17 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 `imagemagick`
 - lock screen
 
+## Installation
 
-## Gnome Keyring
+1. clone repo
+2. run `sudo ./install.sh`
+
+The script will install all nessassarry requirements and creates symlinks to config files. 
+
+
+## Misc
+
+### Gnome Keyring
 
 Switching between Cinnamon and i3 overwrites sessions in Chromium based web browsers as well as in Electron desktop apps.
 
@@ -37,7 +46,7 @@ In i3 it is required to add `--password-store=gnome` options to .desktop files o
 
 There is a script in `scripts/enforce_gnome_keyring.py` that modifies the .desktop files of given apps. It requires operational `locate` command in the system.
 
-### Usage
+#### Usage
 
 Make sure the `locate` is setup and execute the script with names of the applications.
 
@@ -49,7 +58,7 @@ So far tested with `brave-browser` and `slack`.
 # python3 scripts/enforce_gnome_keyring.py -a brave-browser slack
 ```
 
-### Persisten solution
+#### Persisten solution
 
 The downside of using this script is that every package update made by `apt` package manager overwrites .desktop files by they original content. 
 
@@ -58,3 +67,5 @@ To make sure the `--password-store` will be used in .desktop files after every u
 ```
 DPkg::Post-Invoke {"python3 /usr/local/bin/enforce_gnome_keyring.py --no-backup --config /etc/enforce_gnome_keyring.conf";};
 ```
+
+The script is installed by included `install.sh` script by default.
