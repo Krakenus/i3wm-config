@@ -17,8 +17,17 @@ KEYRING_CONF=/etc/enforce_gnome_keyring.conf
 KEYRING_SCRIPT=/usr/local/bin/enforce_gnome_keyring.py
 APT_HOOK=/etc/apt/apt.conf.d/100after-install
 
+add_i3_repo() {
+    echo "Adding i3 repo to apt sources..."
+    su -c "/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2022.02.17_all.deb keyring.deb SHA256:52053550c4ecb4e97c48900c61b2df4ec50728249d054190e8a0925addb12fc6" $SUDO_USER
+    dpkg -i ./keyring.deb
+    echo "deb [arch=amd64] http://debian.sur5r.net/i3/ focal universe" > /etc/apt/sources.list.d/sur5r-i3.list
+    rm ./keyring.deb
+}
+
 install_dependencies() {
-    echo "Installing dependencies..."
+    echo -e "\nInstalling dependencies..."
+    apt-get update
     apt-get install -y \
         i3 \
         brightnessctl \
@@ -29,7 +38,7 @@ install_dependencies() {
         imagemagick \
         locate
 
-    echo "Updating locate db..."
+    echo -e "\nUpdating locate db..."
     updatedb
 }
 
@@ -50,14 +59,14 @@ _replace_symlink() {
 }
 
 remove_existing_config_dirs() {
-    echo "Removing existing config dirs..."
+    echo -e "\nRemoving existing config dirs..."
     
     _remove_dir $I3_DIR
     _remove_dir $I3STATUS_DIR
 }
 
 create_config_symlinks() {
-    echo "Creating config symlinks..."
+    echo -e "\nCreating config symlinks..."
     
     ln -s $PROJECT_DIR/i3 $I3_DIR 
     ln -s $PROJECT_DIR/i3status $I3STATUS_DIR
@@ -68,11 +77,12 @@ create_config_symlinks() {
 }
 
 update_desktop_files() {
-    echo "Updating .desktop files using enforce_gnome_keyring script..."
+    echo -e "\nUpdating .desktop files using enforce_gnome_keyring script..."
 
     python3 $KEYRING_SCRIPT --no-backup --config $KEYRING_CONF
 }
 
+add_i3_repo
 install_dependencies
 remove_existing_config_dirs
 create_config_symlinks
