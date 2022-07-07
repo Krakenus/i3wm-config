@@ -1,0 +1,2 @@
+for_window [class="jetbrains-pycharm" title="Welcome to PyCharm"] floating enabled
+for_window [class="(?i)slack"] floating enabled
