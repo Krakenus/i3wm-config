@@ -33,7 +33,7 @@ It use the latest stable version of i3 from it's [Ubuntu apt repository](https:/
 1. clone repo
 2. run `sudo ./install.sh`
 
-The script will install all nessassarry requirements and creates symlinks to config files. 
+The script will install all necessary requirements and creates symlinks to config files. 
 
 
 ## Misc
@@ -58,7 +58,7 @@ So far tested with `brave-browser` and `slack`.
 # python3 scripts/enforce_gnome_keyring.py -a brave-browser slack
 ```
 
-#### Persisten solution
+#### Persistent solution
 
 The downside of using this script is that every package update made by `apt` package manager overwrites .desktop files by they original content. 
 

@@ -19,7 +19,6 @@ font pango:DejaVu Sans Mono 8
 # screen before suspend. Use loginctl lock-session to lock your screen.
 set $lock $HOME/.config/i3/scripts/lock.sh
 exec --no-startup-id xss-lock --transfer-sleep-lock -- $lock
-bindsym $mod+Ctrl+l exec $lock
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
