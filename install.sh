@@ -42,6 +42,10 @@ install_dependencies() {
     updatedb
 }
 
+add_groups() {
+    usermod -aG video $SUDO_USER
+}
+
 _remove_dir() {
     if [[ -d $1 ]]; then
         rm -rf $1
@@ -84,6 +88,7 @@ update_desktop_files() {
 
 add_i3_repo
 install_dependencies
+add_groups
 remove_existing_config_dirs
 create_config_symlinks
 update_desktop_files
