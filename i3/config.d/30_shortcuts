@@ -110,7 +110,7 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_shutdown "(lock), (e)xit, (s)uspend, (r)eboot, (Shift+s)hutdown"
+set $mode_shutdown "(l)ock, (e)xit, (s)uspend, (r)eboot, (Shift+s)hutdown"
 mode $mode_shutdown {
     bindsym l exec --no-startup-id $lock, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
