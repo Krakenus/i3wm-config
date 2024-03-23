@@ -19,9 +19,9 @@ APT_HOOK=/etc/apt/apt.conf.d/100after-install
 
 add_i3_repo() {
     echo "Adding i3 repo to apt sources..."
-    su -c "/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2022.02.17_all.deb keyring.deb SHA256:52053550c4ecb4e97c48900c61b2df4ec50728249d054190e8a0925addb12fc6" $SUDO_USER
-    dpkg -i ./keyring.deb
-    echo "deb [arch=amd64] http://debian.sur5r.net/i3/ focal universe" > /etc/apt/sources.list.d/sur5r-i3.list
+    /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2023.02.18_all.deb keyring.deb SHA256:a511ac5f10cd811f8a4ca44d665f2fa1add7a9f09bef238cdfad8461f5239cc4
+    apt-get install ./keyring.deb
+    echo "deb http://debian.sur5r.net/i3/ jammy universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
     rm ./keyring.deb
 }
 
